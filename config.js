@@ -1,9 +1,9 @@
 module.exports = {
     db: {
-        user: 'root',
-        password: 'Myvenus123!',
+        user: 'elnuhdba',
+        password: 'cricket169!',
         database: 'bkpsdmd',
-        host: 'localhost',
+        host: 'rm-d9ji2vf8691hofn3amo.mysql.ap-southeast-5.rds.aliyuncs.com',
         port: '3306'
     },
     env: 'dev',
