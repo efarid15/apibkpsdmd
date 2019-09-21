@@ -48,6 +48,22 @@ module.exports = ({db, express, bcrypt, jwt, config}) => {
         })
     })
 
+    routes.post('/bkd', (req, res) => {
+        const bkdnama = req.body.bkdnama
+        const bkdalamat = req.body.bkdalamat
+        const bkdnotelp = req.body.bkdnotelp
+        const bkdkabupaten = req.body.bkdkabupaten
+
+        db.query('insert into bkd(namabkd, alamat, kabupaten, notelp) values(?,?,?,?)',
+            [bkdnama, bkdalamat, bkdkabupaten, bkdnotelp], (error, results) => {
+            if (error) return res.status(500).json({type: 'error', message: 'db error', error})
+            return res.json({
+                type: 'success',
+                message: 'data berhasil disimpan'
+            })
+        })
+    })
+
 
 
     return routes
