@@ -36,6 +36,18 @@ module.exports = ({db, express, bcrypt, jwt, config}) => {
         })
     })
 
+    routes.get('/bkd', (req, res) => {
+        db.query('select * from bkd', (error, results) => {
+            if (error) return res.status(500).json({type: 'error', message: 'db error', error})
+            if (results.length == 0) return res.status(403).json({type: 'error', message: 'Data tidak ditemukan'})
+            return res.json({
+                type: 'success',
+                message: 'data sukses',
+                results
+            })
+        })
+    })
+
 
 
     return routes
