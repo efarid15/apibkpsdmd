@@ -39,7 +39,20 @@ module.exports = ({db, express, bcrypt, jwt, config}) => {
     routes.get('/bkd', (req, res) => {
         db.query('select * from bkd', (error, data) => {
             if (error) return res.status(500).json({type: 'error', message: 'db error', error})
-            if (data.length == 0) return res.status(403).json({type: 'error', message: 'Data tidak ditemukan'})
+            if (data.length == 0) return res.status(404).json({type: 'error', message: 'Data tidak ditemukan'})
+            return res.json({
+                type: 'success',
+                message: 'data sukses',
+                data
+            })
+        })
+    })
+
+    routes.get('/bkd/:bkdid', (req, res) => {
+        const bkdid = req.params.bkdid
+        db.query('select * from bkd where id=?',[bkdid], (error, data) => {
+            if (error) return res.status(500).json({type: 'error', message: 'db error', error})
+            if (data.length == 0) return res.status(404).json({type: 'error', message: 'Data tidak ditemukan'})
             return res.json({
                 type: 'success',
                 message: 'data sukses',
@@ -63,6 +76,36 @@ module.exports = ({db, express, bcrypt, jwt, config}) => {
             })
         })
     })
+
+    routes.put('/bkd', function (req, res) {
+        const bkdid = req.body.bkdid
+        const bkdnama = req.body.bkdnama
+        const bkdalamat = req.body.bkdalamat
+        const bkdnotelp = req.body.bkdnotelp
+        const bkdkabupaten = req.body.bkdkabupaten
+
+        db.query('update bkd set namabkd = ?, alamat = ?, kabupaten = ?, notelp = ? where id=? ',
+            [bkdid, bkdnama, bkdalamat, bkdkabupaten, bkdnotelp], (error, results) => {
+                if (error) return res.status(500).json({type: 'error', message: 'db error', error})
+                return res.json({
+                    type: 'success',
+                    message: 'data berhasil diupdate'
+                })
+            })
+    });
+
+    routes.delete('/bkd', function (req, res) {
+        const bkdid = req.body.bkdid
+
+        db.query('delete from bkd where id = ?',
+            [bkdid], (error, results) => {
+                if (error) return res.status(500).json({type: 'error', message: 'db error', error})
+                return res.json({
+                    type: 'success',
+                    message: 'data berhasil dihapus'
+                })
+            })
+    });
 
 
 

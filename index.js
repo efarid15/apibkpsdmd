@@ -36,6 +36,7 @@ try {
     app.use('/auth', auth({db, express, bcrypt, jwt, config }))
 
 
+
     //app.use('/bkd', bkd({db, express, config}))
 
     app.listen(config.port)
