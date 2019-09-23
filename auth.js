@@ -72,7 +72,8 @@ module.exports = ({db, express, bcrypt, jwt, config}) => {
             if (error) return res.status(500).json({type: 'error', message: 'db error', error})
             return res.json({
                 type: 'success',
-                message: 'data berhasil disimpan'
+                message: 'data berhasil disimpan',
+                results
             })
         })
     })
@@ -85,11 +86,12 @@ module.exports = ({db, express, bcrypt, jwt, config}) => {
         const bkdkabupaten = req.body.bkdkabupaten
 
         db.query('update bkd set namabkd = ?, alamat = ?, kabupaten = ?, notelp = ? where id=? ',
-            [bkdid, bkdnama, bkdalamat, bkdkabupaten, bkdnotelp], (error, results) => {
+            [bkdnama, bkdalamat, bkdkabupaten, bkdnotelp, bkdid], (error, results) => {
                 if (error) return res.status(500).json({type: 'error', message: 'db error', error})
                 return res.json({
                     type: 'success',
-                    message: 'data berhasil diupdate'
+                    message: 'data berhasil diupdate',
+                    results
                 })
             })
     });
