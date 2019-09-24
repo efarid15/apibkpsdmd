@@ -18,6 +18,6 @@ https.createServer({
     cert: fs.readFileSync('server.cert')
   }, app)
   .listen(port, function () {
-    console.log('BKPSDMD Sulsel RESTful API server started on: ' + port)
+    console.log('BKPSDMD Sulsel API server started on: ' + port)
   })
 
