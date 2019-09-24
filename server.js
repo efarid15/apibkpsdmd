@@ -14,8 +14,8 @@ let routes = require('./routes');
 routes(app);
 
 https.createServer({
-    key: fs.readFileSync('server.key'),
-    cert: fs.readFileSync('server.cert')
+    key: fs.readFileSync('localhost.key'),
+    cert: fs.readFileSync('localhost.cert')
   }, app)
   .listen(port, function () {
     console.log('BKPSDMD Sulsel API server started on: ' + port)
