@@ -35,6 +35,9 @@ try {
 
     app.use('/auth', auth({db, express, bcrypt, jwt, config }))
 
+    let routes = require('./routes');
+    routes(app);
+
 
 
     //app.use('/bkd', bkd({db, express, config}))
