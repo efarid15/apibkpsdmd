@@ -22,7 +22,7 @@ exports.findBkd = function(req, res) {
     var bkd_id = req.params.bkd_id;
 
     connection.query('SELECT * FROM bkd where id = ?',
-        [ user_id ],
+        [ bkd_id ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
