@@ -6,6 +6,21 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
+
+exports.me = function(req, res) {
+    const token = req.headers['x-access-token']
+    if (!token) return res.status(400).json({type: 'error', message: 'x-access-token header tidak ditemukan.'})
+    jwt.verify(token, config.jwtToken, (error, result) => {
+        if (error) return res.status(403).json({type: 'error', message: 'Token yang diberikan salah.', error})
+        return res.json({
+            type: 'success',
+            message: 'token yang diberikan benar.',
+            result
+        })
+    })
+
+};
+
 exports.login = function(req, res) {
     const email = req.body.email
     const password = req.body.password

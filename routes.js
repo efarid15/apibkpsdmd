@@ -8,6 +8,9 @@ module.exports = function(app) {
     app.route('/login')
         .post(auth.login)
 
+    app.route('/me')
+        .get(auth.me);    
+
     app.route('/')
         .get(users.index);
 
