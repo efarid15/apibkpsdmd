@@ -1,6 +1,6 @@
 let express = require('express'),
-    fs = require('fs'),
-    https = require('https'),
+    //fs = require('fs'),
+    //https = require('https'),
     app = express(),
     port = process.env.PORT || 3333,
     bodyParser = require('body-parser'),
@@ -13,11 +13,14 @@ app.use(bodyParser.json());
 let routes = require('./routes');
 routes(app);
 
-https.createServer({
+app.listen(port);
+console.log('BKPSDMD Sulsel API server started on: ' + port)
+
+/*https.createServer({
     key: fs.readFileSync('localhost.key'),
     cert: fs.readFileSync('localhost.cert')
   }, app)
   .listen(port, function () {
     console.log('BKPSDMD Sulsel API server started on: ' + port)
-  })
+  })*/
 
