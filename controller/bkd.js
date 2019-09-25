@@ -34,56 +34,54 @@ exports.findBkd = function(req, res) {
 
 exports.createBkd = function(req, res) {
 
-    const nip = req.body.nip;
-    const nama = req.body.nama;
-    const roleid = req.body.roleid;
-    const email = req.body.email;
-    const password = req.body.password;
+    const namaBkd = req.body.namaBkd;
+    const alamatBkd = req.body.alamatBkd;
+    const kabupatenBkd = 'Makassar';
+    const notelpBkd = req.body.notelpBkd;
 
 
-    connection.query('INSERT INTO users (nip, roleid, email, password) values (?,?,?,?)',
-        [ nip, roleid, nama, email, password ],
+    connection.query('INSERT INTO bkd (namabkd, alamat, kabupaten, notelp) values (?,?,?,?)',
+        [ namaBkd, alamatBkd, kabupatenBkd, notelpBkd ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
             } else{
-                response.ok("Berhasil menambahkan user!", res)
+                response.ok("Berhasil menambahkan BKD!", res)
             }
         });
 };
 
 exports.updateBkd = function(req, res) {
 
-    const user_id = req.body.user_id;
-    const nip = req.body.nip;
-    const nama = req.body.nama;
-    const roleid = req.body.roleid;
-    const email = req.body.email;
-    const password = req.body.password;
+    const bkdId = req.body.bkdId;
+    const namaBkd = req.body.namaBkd;
+    const alamatBkd = req.body.alamatBkd;
+    const kabupatenBkd = 'Makassar';
+    const notelpBkd = req.body.notelpBkd;
 
 
-    connection.query('UPDATE person SET nip = ?, roleid = ?, email = ?, nama = ?, password = ?  WHERE id = ?',
-        [ nip, roleid, email, nama, password, user_id ],
+    connection.query('UPDATE bkd SET namabkd = ?, alamat = ?, kabupaten = ?, notelp = ?  WHERE id = ?',
+        [ namaBkd, alamatBkd, kabupatenBkd, notelpBkd, bkdId ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
             } else{
-                response.ok("Berhasil merubah user!", res)
+                response.ok("Berhasil merubah BKD!", res)
             }
         });
 };
 
 exports.deleteBkd = function(req, res) {
 
-    const user_id = req.body.user_id;
+    const bkdId = req.body.bkdId;
 
-    connection.query('DELETE FROM users WHERE id = ?',
-        [ user_id ],
+    connection.query('DELETE FROM bkd WHERE id = ?',
+        [ bkdId ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
             } else{
-                response.ok("Berhasil menghapus user!", res)
+                response.ok("Berhasil menghapus BKD!", res)
             }
         });
 };
