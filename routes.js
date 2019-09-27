@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = function(app) {
+    
     const users = require('./controller/users');
     const auth = require('./controller/auth');
-    const bkd = require('./controller/bkd');
-
+    
     app.route('/login')
         .post(auth.login)
 
@@ -28,10 +28,11 @@ module.exports = function(app) {
 
     app.route('/users')
         .delete(users.deleteUsers);
-    
-        app.route('/')
-        .get(bkd.index);
 
+    const bkd = require('./controller/bkd');
+
+    
+    
     app.route('/bkd')
         .get(bkd.listBkd);
 
@@ -46,4 +47,126 @@ module.exports = function(app) {
 
     app.route('/bkd')
         .delete(bkd.deleteBkd);
+
+    const skpd = require('./controller/skpd');
+
+    
+        
+        app.route('/skpd')
+            .get(skpd.listSkpd);
+    
+        app.route('/skpd/:skpd_id')
+            .get(skpd.findSkpd);
+    
+        app.route('/skpd')
+            .post(skpd.createSkpd);
+    
+        app.route('/skpd')
+            .put(skpd.updateSkpd);
+    
+        app.route('/skpd')
+            .delete(skpd.deleteSkpd);
+
+    
+    const jenisdiklat = require('./controller/jenisdiklat');
+
+            app.route('/jenisdiklat')
+                .get(jenisdiklat.listJenis);
+        
+            app.route('/jenisdiklat/:jenisId')
+                .get(jenisdiklat.findJenis);
+        
+            app.route('/jenisdiklat')
+                .post(jenisdiklat.createJenis);
+        
+            app.route('/jenisdiklat')
+                .put(jenisdiklat.updateJenis);
+        
+            app.route('/jenisdiklat')
+                .delete(jenisdiklat.deleteJenis);
+
+    const tempatdiklat = require('./controller/tempat');
+
+            app.route('/tempat')
+                    .get(tempatdiklat.listTempat);
+            
+            app.route('/tempat/:tempatId')
+                    .get(tempatdiklat.findTempat);
+            
+            app.route('/tempat')
+                    .post(tempatdiklat.createTempat);
+            
+            app.route('/tempat')
+                    .put(tempatdiklat.updateTempat);
+            
+            app.route('/tempat')
+                    .delete(tempatdiklat.deleteTempat);
+
+            
+    const widyaiswara = require('./controller/widyaiswara');
+
+        app.route('/widyaiswara')
+            .get(widyaiswara.listWidyaiswara);
+                    
+        app.route('/widyaiswara/:widyaiswaraId')
+            .get(widyaiswara.findWidyaiswara);
+                    
+        app.route('/widyaiswara')
+            .post(widyaiswara.createWidyaiswara);
+                    
+        app.route('/widyaiswara')
+            .put(widyaiswara.updateWidyaiswara);
+                    
+        app.route('/widyaiswara')
+            .delete(widyaiswara.deleteWidyaiswara);
+
+
+    const kegiatan = require('./controller/kegiatan');
+
+        app.route('/kegiatan')
+                .get(kegiatan.listKegiatan);
+                        
+        app.route('/kegiatan/:kegiatanId')
+                .get(kegiatan.findKegiatan);
+                        
+        app.route('/kegiatan')
+                .post(kegiatan.createKegiatan);
+                        
+        app.route('/kegiatan')
+                .put(kegiatan.updateKegiatan);
+                        
+        app.route('/kegiatan')
+                .delete(kegiatan.deleteKegiatan);
+
+    
+    const detailkegiatan = require('./controller/detailkegiatan');
+
+                app.route('/detailkegiatan')
+                        .get(detailkegiatan.listDetailkegiatan);
+                                
+                app.route('/detailkegiatan/:detailkegiatanId')
+                        .get(detailkegiatan.findDetailkegiatan);
+                                
+                app.route('/detailkegiatan')
+                        .post(detailkegiatan.createDetailkegiatan);
+                                
+                app.route('/detailkegiatan')
+                        .put(detailkegiatan.updateDetailkegiatan);
+                                
+                app.route('/detailkegiatan')
+                        .delete(detailkegiatan.deleteDetailkegiatan);
+
+    
+   const pengajuan = require('./controller/pengajuan');
+
+                app.route('/pengajuan')
+                        .get(pengajuan.listPengajuan);
+                                
+                app.route('/pengajuan/:pengajuanId')
+                        .get(pengajuan.findPengajuan);
+
+
+
+
+    
 };

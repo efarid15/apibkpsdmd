@@ -13,9 +13,6 @@ exports.listBkd = function(req, res) {
     });
 };
 
-exports.index = function(req, res) {
-    response.ok("Hello from BKPSDMD Sulsel API Server!", res)
-};
 
 exports.findBkd = function(req, res) {
 
