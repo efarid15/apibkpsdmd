@@ -2,8 +2,11 @@
 
 const response = require('../res');
 const connection = require('../conn');
+const datetime = new Date().toLocaleString();
+
 
 exports.listKegiatan = function(req, res) {
+    datetime.params
     connection.query('SELECT * FROM v_kegiatan', function (error, rows, fields){
         if(error){
             console.log(error)
