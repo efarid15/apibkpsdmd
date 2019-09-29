@@ -82,7 +82,7 @@ module.exports = function(app) {
             app.route('/jenisdiklat')
                 .put(jenisdiklat.updateJenis);
         
-            app.route('/jenisdiklat')
+            app.route('/jenisdiklat/:jenisId')
                 .delete(jenisdiklat.deleteJenis);
 
     const tempatdiklat = require('./controller/tempat');

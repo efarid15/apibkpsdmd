@@ -66,7 +66,7 @@ exports.updateJenis = function(req, res) {
 
 exports.deleteJenis = function(req, res) {
 
-    const jenisId = req.body.jenisId;
+    const jenisId = req.params.jenisId;
 
     connection.query('DELETE FROM jenisdiklat WHERE id = ?',
         [ jenisId ],
