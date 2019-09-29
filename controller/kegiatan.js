@@ -4,7 +4,7 @@ const response = require('../res');
 const connection = require('../conn');
 
 exports.listKegiatan = function(req, res) {
-    connection.query('SELECT * FROM kegiatan', function (error, rows, fields){
+    connection.query('SELECT * FROM v_kegiatan', function (error, rows, fields){
         if(error){
             console.log(error)
         } else{
