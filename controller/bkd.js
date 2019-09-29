@@ -70,7 +70,7 @@ exports.updateBkd = function(req, res) {
 
 exports.deleteBkd = function(req, res) {
 
-    const bkdId = req.body.bkdId;
+    const bkdId = req.params.bkdId;
 
     connection.query('DELETE FROM bkd WHERE id = ?',
         [ bkdId ],

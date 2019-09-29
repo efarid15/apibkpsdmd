@@ -45,7 +45,7 @@ module.exports = function(app) {
     app.route('/bkd')
         .put(bkd.updateBkd);
 
-    app.route('/bkd')
+    app.route('/bkd/:bkdId')
         .delete(bkd.deleteBkd);
 
     const skpd = require('./controller/skpd');
