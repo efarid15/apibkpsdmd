@@ -70,7 +70,7 @@ exports.updateSkpd = function(req, res) {
 
 exports.deleteSkpd = function(req, res) {
 
-    const skpdId = req.body.skpdId;
+    const skpdId = req.params.skpdId;
 
     connection.query('DELETE FROM skpd WHERE id = ?',
         [ skpdId ],

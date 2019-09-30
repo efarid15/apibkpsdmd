@@ -64,7 +64,7 @@ module.exports = function(app) {
         app.route('/skpd')
             .put(skpd.updateSkpd);
     
-        app.route('/skpd')
+        app.route('/skpd/:skpdId')
             .delete(skpd.deleteSkpd);
 
     
