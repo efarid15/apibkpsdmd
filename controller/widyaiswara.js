@@ -68,7 +68,7 @@ exports.updateWidyaiswara = function(req, res) {
 
 exports.deleteWidyaiswara = function(req, res) {
 
-    const widyaiswaraId = req.body.widyaiswaraId;
+    const widyaiswaraId = req.params.widyaiswaraId;
 
     connection.query('DELETE FROM widyaiswara WHERE id = ?',
         [ widyaiswaraId ],

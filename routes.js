@@ -117,7 +117,7 @@ module.exports = function(app) {
         app.route('/widyaiswara')
             .put(widyaiswara.updateWidyaiswara);
                     
-        app.route('/widyaiswara')
+        app.route('/widyaiswara/:widyaiswaraId')
             .delete(widyaiswara.deleteWidyaiswara);
 
 
