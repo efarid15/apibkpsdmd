@@ -68,7 +68,7 @@ exports.updateTempat = function(req, res) {
 
 exports.deleteTempat = function(req, res) {
 
-    const tempatId = req.body.tempatId;
+    const tempatId = req.params.tempatId;
 
     connection.query('DELETE FROM tempat WHERE id = ?',
         [ tempatId ],

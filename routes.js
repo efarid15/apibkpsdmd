@@ -99,7 +99,7 @@ module.exports = function(app) {
             app.route('/tempat')
                     .put(tempatdiklat.updateTempat);
             
-            app.route('/tempat')
+            app.route('/tempat/:tempatId')
                     .delete(tempatdiklat.deleteTempat);
 
             
