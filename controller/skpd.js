@@ -16,10 +16,10 @@ exports.listSkpd = function(req, res) {
 
 exports.findSkpd = function(req, res) {
 
-    var bkd_id = req.params.bkd_id;
+    var skpd_id = req.params.skpd_id;
 
     connection.query('SELECT * FROM skpd where id = ?',
-        [ bkd_id ],
+        [ skpd_id ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
