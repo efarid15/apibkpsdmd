@@ -161,6 +161,9 @@ module.exports = function(app) {
 
                 app.route('/pengajuan')
                         .get(pengajuan.listPengajuan);
+                        
+                app.route('/pengajuan/approve')
+                        .get(pengajuan.listApprove);
                                 
                 app.route('/pengajuan/:pengajuanId')
                         .get(pengajuan.findPengajuan);

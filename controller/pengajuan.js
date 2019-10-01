@@ -13,6 +13,16 @@ exports.listPengajuan = function(req, res) {
     });
 };
 
+exports.listApprove = function(req, res) {
+    connection.query('SELECT * FROM v_approve', function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok(rows, res)
+        }
+    });
+};
+
 exports.createPengajuan= function(req, res) {
 
     const idBkd = req.body.idBkd;
