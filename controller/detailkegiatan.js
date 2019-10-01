@@ -18,7 +18,7 @@ exports.findDetailkegiatan = function(req, res) {
 
     var detailkegiatanId = req.params.detailkegiatanId;
 
-    connection.query('SELECT * FROM detailkegiatan where id = ?',
+    connection.query('SELECT * FROM v_detailkegiatan where idkegiatan = ?',
         [ detailkegiatanId ],
         function (error, rows, fields){
             if(error){

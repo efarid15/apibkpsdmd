@@ -13,6 +13,26 @@ exports.listPengajuan = function(req, res) {
     });
 };
 
+exports.createPengajuan= function(req, res) {
+
+    const idBkd = req.body.idBkd;
+    const idSkpd = req.body.idSkpd;
+    const namaKegiatan = req.body.namaKegiatan;
+    const jmlPeserta = req.body.jmlPeserta;
+    const tglKegiatan = req.body.tglKegiatan;
+    
+    
+    connection.query('INSERT INTO pengajuan (skpd, bkd, namakegiatan, jmlpeserta, tglkegiatan) values (?,?,?,?,?)',
+        [ idSkpd, idBkd, namaKegiatan, jmlPeserta, tglKegiatan ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil menambahkan pengajuan ", res)
+            }
+        });
+};
+
 
 exports.findPengajuan = function(req, res) {
 

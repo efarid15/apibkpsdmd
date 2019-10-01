@@ -6,7 +6,7 @@ const con = mysql.createConnection({
     password: "cricket169!",
     database: "bkpsdmd",
     //dateStrings:true,
-    timezone: "Asia/Jakarta",
+    //timezone: "Asia/Jakarta",
 });
 
 con.connect(function (err){

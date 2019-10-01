@@ -164,6 +164,9 @@ module.exports = function(app) {
                                 
                 app.route('/pengajuan/:pengajuanId')
                         .get(pengajuan.findPengajuan);
+                
+                        app.route('/pengajuan')
+                        .post(pengajuan.createPengajuan);
 
 
 
