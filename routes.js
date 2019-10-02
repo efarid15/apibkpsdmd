@@ -191,7 +191,10 @@ module.exports = function(app) {
                 app.route('/pengajuan/:pengajuanId')
                         .get(pengajuan.findPengajuan);
                 
-                        app.route('/pengajuan')
+                app.route('/pengajuan/:pengajuanId')
+                        .put(pengajuan.setApprove);
+                
+                app.route('/pengajuan')
                         .post(pengajuan.createPengajuan);
 
 

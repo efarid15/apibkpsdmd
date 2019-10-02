@@ -59,3 +59,19 @@ exports.findPengajuan = function(req, res) {
         });
 };
 
+exports.setApprove = function(req, res) {
+
+    var pengajuanId = req.params.pengajuanId;
+    var statusPengajuan = req.body.statusPengajuan;
+
+    connection.query('UPDATE pengajuan SET status = ? where id = ?',
+        [ statusPengajuan, pengajuanId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
+
