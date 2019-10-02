@@ -61,7 +61,7 @@ exports.findPengajuan = function(req, res) {
 
 exports.setApprove = function(req, res) {
 
-    var pengajuanId = req.params.pengajuanId;
+    var pengajuanId = req.body.pengajuanId;
     var statusPengajuan = req.body.statusPengajuan;
 
     connection.query('UPDATE pengajuan SET status = ? where id = ?',
