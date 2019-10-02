@@ -101,6 +101,29 @@ module.exports = function(app) {
             
             app.route('/tempat/:tempatId')
                     .delete(tempatdiklat.deleteTempat);
+    
+    
+    const kampus = require('./controller/kampus');
+
+            app.route('/kampus')
+                    .get(kampus.listKampus);
+            app.route('/vkampus')
+                    .get(kampus.listVKampus);
+            
+            app.route('/kampus/ruangan/:kampusId')
+                    .get(kampus.listRuanganKampus);
+                    
+            app.route('/kampus/:kampusId')
+                    .get(kampus.findKampus);
+                    
+            app.route('/kampus')
+                    .post(kampus.createKampus);
+                    
+            app.route('/kampus')
+                    .put(kampus.updateKampus);
+                    
+            app.route('/kampus/:kampusId')
+                    .delete(kampus.deleteKampus);
 
             
     const widyaiswara = require('./controller/widyaiswara');
