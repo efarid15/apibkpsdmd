@@ -17,6 +17,9 @@ module.exports = function(app) {
     app.route('/users')
         .get(users.users);
 
+    app.route('/bkduser')
+        .get(users.bkdUser);
+
     app.route('/users/:user_id')
         .get(users.findUsers);
 

@@ -13,6 +13,16 @@ exports.users = function(req, res) {
     });
 };
 
+exports.bkdUser = function(req, res) {
+    connection.query('SELECT * FROM v_bkduser', function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok(rows, res)
+        }
+    });
+};
+
 exports.index = function(req, res) {
     response.ok("Hello from BKPSDMD Sulsel API Server!", res)
 };
