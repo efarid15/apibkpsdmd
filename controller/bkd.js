@@ -4,7 +4,7 @@ const response = require('../res');
 const connection = require('../conn');
 
 exports.listBkd = function(req, res) {
-    connection.query('SELECT * FROM bkd', function (error, rows, fields){
+    connection.query('SELECT * FROM v_bkd', function (error, rows, fields){
         if(error){
             console.log(error)
         } else{
@@ -33,7 +33,7 @@ exports.createBkd = function(req, res) {
 
     const namaBkd = req.body.namaBkd;
     const alamatBkd = req.body.alamatBkd;
-    const kabupatenBkd = 'Makassar';
+    const kabupatenBkd = req.body.kabupatenBkd;
     const notelpBkd = req.body.notelpBkd;
 
 
@@ -53,7 +53,7 @@ exports.updateBkd = function(req, res) {
     const bkdId = req.body.bkdId;
     const namaBkd = req.body.namaBkd;
     const alamatBkd = req.body.alamatBkd;
-    const kabupatenBkd = 'Makassar';
+    const kabupatenBkd = req.body.kabupatenBkd;
     const notelpBkd = req.body.notelpBkd;
 
 
