@@ -197,5 +197,15 @@ module.exports = function(app) {
                 app.route('/pengajuan')
                         .post(pengajuan.createPengajuan);
 
+     const kabupaten = require('./controller/kabupaten');
+
+                        app.route('/kabupaten')
+                                .get(kabupaten.listKabupaten);
+        
     
 };
+
+                        
+                
+    
+
