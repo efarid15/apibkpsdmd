@@ -1,4 +1,5 @@
 'use strict';
+const bcrypt = require('bcrypt');
 
 const response = require('../res');
 const connection = require('../conn');
@@ -48,6 +49,7 @@ exports.createUsers = function(req, res) {
     const nama = req.body.nama;
     const roleid = req.body.roleid;
     const email = req.body.email;
+    const idbkd = req.body.idbkd;
     const password = req.body.password;
 
 
@@ -61,6 +63,29 @@ exports.createUsers = function(req, res) {
             }
         });
 };
+
+exports.createBkduser = function(req, res) {
+
+    const idbkd = req.body.idbkd;
+    const nama = req.body.nama;
+    const roleid = req.body.roleid;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    let hash = bcrypt.hashSync(password, 10);
+
+
+    connection.query('INSERT INTO users (roleid, email, nama, password, bkdid) values (?,?,?,?,?)',
+        [ roleid, email, nama, hash, idbkd ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil menambahkan user!", res)
+            }
+        });
+};
+
 
 exports.updateUsers = function(req, res) {
 
