@@ -39,8 +39,6 @@ module.exports = function(app) {
         .delete(users.deleteUsers);
 
     const bkd = require('./controller/bkd');
-
-    
     
     app.route('/bkd')
         .get(bkd.listBkd);
@@ -199,7 +197,7 @@ module.exports = function(app) {
                                 
                 app.route('/pengajuan/:pengajuanId')
                         .get(pengajuan.findPengajuan);
-                
+
                 app.route('/pengajuan')
                         .put(pengajuan.setApprove);
                 
@@ -210,6 +208,17 @@ module.exports = function(app) {
 
                         app.route('/kabupaten')
                                 .get(kabupaten.listKabupaten);
+
+    const detailpengajuan = require('./controller/detailpengajuan');
+
+                                app.route('/detailpengajuan')
+                                        .get(detailpengajuan.listDetailpengajuan);
+                                                        
+                                app.route('/detailpengajuan/:pengajuanId')
+                                        .get(detailpengajuan.findDetailpengajuan);
+                                
+                                app.route('/detailpengajuan')
+                                        .post(detailpengajuan.createDetailpengajuan);
         
     
 };
