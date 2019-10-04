@@ -29,6 +29,9 @@ module.exports = function(app) {
         app.route('/bkduser')
         .post(users.createBkduser);
 
+        app.route('/memberuser')
+        .post(users.createMemberuser);
+
     app.route('/users')
         .put(users.updateUsers);
 

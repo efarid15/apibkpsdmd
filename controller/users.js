@@ -86,6 +86,31 @@ exports.createBkduser = function(req, res) {
         });
 };
 
+exports.createMemberuser = function(req, res) {
+
+    const nip = req.body.nip
+    const idbkd = req.body.idbkd;
+    const idskpd = req.body.idskpd;
+    const idkegiatan = req.body.idkegiatan;
+    const nama = req.body.nama;
+    const roleid = req.body.roleid;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    let hash = bcrypt.hashSync(password, 10);
+
+
+    connection.query('INSERT INTO users (nip, roleid, email, nama, password, bkdid, skpdid, kegiatanid) values (?,?,?,?,?,?,?,?)',
+        [ nip, roleid, email, nama, hash, idbkd, idskpd, idkegiatan ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil menambahkan user!", res)
+            }
+        });
+};
+
 
 exports.updateUsers = function(req, res) {
 
