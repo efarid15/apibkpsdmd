@@ -37,7 +37,7 @@ exports.login = function(req, res) {
                     res.json({
                         type: 'success',
                         message: 'User berhasil login',
-                        user: {id: user.id, email: user.email, nama:user.nama, roleuser:user.role},
+                        user: {id: user.id, email: user.email, nama:user.nama, roleuser:user.role, bkdid:user.bkdid},
                         token: jwt.sign({id: user.id, email: user.email}, config.jwtToken, {expiresIn: '7d'})
                     })
                 } else return res.status(403).json({type: 'error', message: 'Password salah.'})
