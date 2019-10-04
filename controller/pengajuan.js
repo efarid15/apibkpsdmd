@@ -42,6 +42,20 @@ exports.createPengajuan= function(req, res) {
         });
 };
 
+exports.findApprove = function(req, res) {
+
+    var pengajuanId = req.params.pengajuanId;
+
+    connection.query('SELECT * FROM v_approve where id = ?',
+        [ pengajuanId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
 
 exports.findPengajuan = function(req, res) {
 
