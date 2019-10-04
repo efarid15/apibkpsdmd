@@ -212,6 +212,13 @@ module.exports = function(app) {
                         app.route('/kabupaten')
                                 .get(kabupaten.listKabupaten);
 
+    const peserta = require('./controller/peserta');
+
+        app.route('/peserta')
+                .get(peserta.listPeserta);
+        app.route('/peserta/:pengajuanId')
+                .get(peserta.listPesertapengajuan);
+
     const detailpengajuan = require('./controller/detailpengajuan');
 
                                 app.route('/detailpengajuan')
