@@ -197,6 +197,17 @@ module.exports = function(app) {
                 
                 app.route('/pengajuan/approve/:pengajuanId')
                         .get(pengajuan.findApprove);
+
+                app.route('/pengajuan/approve/bkd/:bkdId')
+                        .get(pengajuan.listApprovebkd);
+
+                app.route('/pengajuan/approve/bkd/:bkdId/:pengajuanId')
+                        .get(pengajuan.findApprovebkd);
+                
+                app.route('/pengajuan/approve/:pengajuanId')
+                        .get(pengajuan.findApprove);
+
+
                                 
                 app.route('/pengajuan/:pengajuanId')
                         .get(pengajuan.findPengajuan);

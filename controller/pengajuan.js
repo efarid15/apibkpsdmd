@@ -57,6 +57,38 @@ exports.findApprove = function(req, res) {
         });
 };
 
+exports.findApprovebkd = function(req, res) {
+
+    var bkdId = req.params.bkdId;
+    var pengajuanId = req.params.pengajuanId;
+
+    connection.query('SELECT * FROM v_approve where bkd = ? and id= ?',
+        [ bkdId, pengajuanId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
+
+
+exports.listApprovebkd = function(req, res) {
+
+    var bkdId = req.params.bkdId;
+
+    connection.query('SELECT * FROM v_approve where bkd = ?',
+        [ bkdId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
+
 exports.findPengajuan = function(req, res) {
 
     var pengajuanId = req.params.pengajuanId;
