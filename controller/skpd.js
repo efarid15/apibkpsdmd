@@ -13,6 +13,21 @@ exports.listSkpd = function(req, res) {
     });
 };
 
+exports.listSkpdbkd = function(req, res) {
+
+    var bkdid = req.params.bkdid;
+
+    connection.query('SELECT * FROM skpd where bkdid = ?',
+        [ bkdid ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
+
 
 exports.findSkpd = function(req, res) {
 

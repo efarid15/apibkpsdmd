@@ -61,6 +61,9 @@ module.exports = function(app) {
         
         app.route('/skpd')
             .get(skpd.listSkpd);
+
+        app.route('/skpd/bkd/:bkdid')
+            .get(skpd.listSkpdbkd);
     
         app.route('/skpd/:skpd_id')
             .get(skpd.findSkpd);
