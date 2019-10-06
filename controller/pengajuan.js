@@ -13,6 +13,22 @@ exports.listPengajuan = function(req, res) {
     });
 };
 
+exports.listPengajuanbkd = function(req, res) {
+
+    var bkdId = req.params.bkdId;
+
+    connection.query('SELECT * FROM v_pengajuan where bkd = ?',
+        [ bkdId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
+
+
 exports.listApprove = function(req, res) {
     connection.query('SELECT * FROM v_approve', function (error, rows, fields){
         if(error){
