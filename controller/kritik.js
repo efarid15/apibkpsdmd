@@ -37,7 +37,7 @@ exports.createKritik = function(req, res) {
     const avatar = req.body.avatar;
     
 
-    connection.query('INSERT INTO  (idbkd, kritiksaran, user, avatar) values (?,?,?,?)',
+    connection.query('INSERT INTO kritikdansaran (idbkd, kritiksaran, user, avatar) values (?,?,?,?)',
         [ idBkd, kritiksaran, user, avatar ],
         function (error, rows, fields){
             if(error){
