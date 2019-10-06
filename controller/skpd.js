@@ -50,10 +50,11 @@ exports.createSkpd = function(req, res) {
     const alamatSkpd = req.body.alamatSkpd;
     const kabupatenSkpd = 'Makassar';
     const notelpSkpd = req.body.notelpSkpd;
+    const bkdid = req.body.bkdid
 
 
-    connection.query('INSERT INTO skpd (namaskpd, alamat, kabupaten, notelp) values (?,?,?,?)',
-        [ namaSkpd, alamatSkpd, kabupatenSkpd, notelpSkpd ],
+    connection.query('INSERT INTO skpd (namaskpd, alamat, kabupaten, notelp, bkdid) values (?,?,?,?,?)',
+        [ namaSkpd, alamatSkpd, kabupatenSkpd, notelpSkpd, bkdid ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
