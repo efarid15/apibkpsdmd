@@ -245,6 +245,18 @@ module.exports = function(app) {
                                 
                                 app.route('/detailpengajuan')
                                         .post(detailpengajuan.createDetailpengajuan);
+
+    const kritik = require('./controller/kritik');
+
+         app.route('/kritik')
+                .get(kritik.listKritik);
+
+        app.route('/kritik/bkd/:bkdId')
+                .get(kritik.lisKritikbkd);
+
+        app.route('/kritik')
+                .post(kritik.createKritik);
+                                
         
     
 };
