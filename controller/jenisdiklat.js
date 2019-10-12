@@ -33,10 +33,11 @@ exports.createJenis = function(req, res) {
 
     const jenisDiklat = req.body.jenisDiklat;
     const durasiJenis = req.body.durasiJenis;
+    const kategoriDiklat = req.body.kategoriDiklat;
     
 
     connection.query('INSERT INTO jenisdiklat (jenisdiklat, durasi) values (?,?)',
-        [ jenisDiklat, durasiJenis ],
+        [ jenisDiklat, durasiJenis, kategoriDiklat ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
@@ -51,10 +52,11 @@ exports.updateJenis = function(req, res) {
     const jenisId = req.body.jenisId;
     const jenisDiklat = req.body.jenisDiklat;
     const durasiJenis = req.body.durasiJenis;
+    const kategoriDiklat = req.body.kategoriDiklat;
     
 
-    connection.query('UPDATE jenisdiklat SET jenisdiklat = ?, durasi = ?  WHERE id = ?',
-        [ jenisDiklat, durasiJenis,jenisId ],
+    connection.query('UPDATE jenisdiklat SET jenisdiklat = ?, durasi = ?, idkategori = ?  WHERE id = ?',
+        [ jenisDiklat, durasiJenis,jenisId, kategoriDiklat ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
