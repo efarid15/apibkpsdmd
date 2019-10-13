@@ -90,7 +90,7 @@ exports.createRuangan = function(req, res) {
     const namaRuangan = req.body.namaRuangan;
     
 
-    connection.query('INSERT INTO ruangan (idkampus, namaruangan) values (?,?)',
+    connection.query('INSERT INTO ruangankampus (idkampus, namaruangan) values (?,?)',
         [ idKampus, namaRuangan ],
         function (error, rows, fields){
             if(error){
@@ -107,7 +107,7 @@ exports.updateRuangan = function(req, res) {
     const idRuangan = req.body.idRuangan;
     
 
-    connection.query('UPDATE ruangan SET namaruangan = ?   WHERE id = ?',
+    connection.query('UPDATE ruangankampus SET namaruangan = ?   WHERE id = ?',
         [ namaRuangan, idRuangan ],
         function (error, rows, fields){
             if(error){
