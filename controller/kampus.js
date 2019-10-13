@@ -77,13 +77,13 @@ exports.updateKampus = function(req, res) {
     const alamatKampus = req.body.alamatKampus;
     
 
-    connection.query('UPDATE tempat SET namatempat = ?, alamat = ?   WHERE id = ?',
-        [ namaTempat, alamatTempat, tempatId ],
+    connection.query('UPDATE kampus SET namakampus = ?, alamat = ?   WHERE id = ?',
+        [ namaKampus, alamatKampus, kampusId ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
             } else{
-                response.ok("Berhasil merubah tempat diklat !", res)
+                response.ok("Berhasil merubah kampus !", res)
             }
         });
 };
@@ -92,13 +92,13 @@ exports.deleteKampus = function(req, res) {
 
     const kampusId = req.params.kampusId;
 
-    connection.query('DELETE FROM tempat WHERE id = ?',
+    connection.query('DELETE FROM kampus WHERE id = ?',
         [ kampusId ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
             } else{
-                response.ok("Berhasil menghapus tempat diklat!", res)
+                response.ok("Berhasil menghapus kampus diklat!", res)
             }
         });
 };
