@@ -72,7 +72,7 @@ exports.createKampus = function(req, res) {
 
 exports.updateKampus = function(req, res) {
 
-    const kampusId = req.body.tempatId;
+    const kampusId = req.body.kampusId;
     const namaKampus = req.body.namaKampus;
     const alamatKampus = req.body.alamatKampus;
     
