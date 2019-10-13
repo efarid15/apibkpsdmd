@@ -128,9 +128,15 @@ module.exports = function(app) {
                     
             app.route('/kampus')
                     .post(kampus.createKampus);
+
+            app.route('/ruangan')
+                    .post(kampus.createRuangan);
                     
             app.route('/kampus')
                     .put(kampus.updateKampus);
+
+             app.route('/ruangan')
+                    .put(kampus.updateRuangan);
                     
             app.route('/kampus/:kampusId')
                     .delete(kampus.deleteKampus);

@@ -70,6 +70,42 @@ exports.createKampus = function(req, res) {
         });
 };
 
+exports.createRuangan = function(req, res) {
+
+    const idKampus = req.body.idKampus;
+    const namaRuangan = req.body.namaRuangan;
+    
+
+    connection.query('INSERT INTO ruangan (idkampus, namaruangan) values (?,?)',
+        [ idKampus, namaRuangan ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil menambahkan Ruangan kampus", res)
+            }
+        });
+};
+
+exports.updateRuangan = function(req, res) {
+
+    const idKampus = req.body.idKampus;
+    const namaRuangan = req.body.namaRuangan;
+    const idRuangan = req.body.idRuangan;
+    
+
+    connection.query('UPDATE ruangan SET idkampus = ?, namaruangan = ?   WHERE id = ?',
+        [ idKampus, namaRuangan, idRuangan ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil merubah ruangan !", res)
+            }
+        });
+};
+
+
 exports.updateKampus = function(req, res) {
 
     const kampusId = req.body.kampusId;
