@@ -52,6 +52,20 @@ exports.findKampus = function(req, res) {
             }
         });
 };
+exports.findVKampus = function(req, res) {
+
+    var ruanganId = req.params.ruanganId;
+
+    connection.query('SELECT * FROM v_ruangankampus where id = ?',
+        [ ruanganId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
 
 exports.createKampus = function(req, res) {
 

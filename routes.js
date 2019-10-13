@@ -122,6 +122,9 @@ module.exports = function(app) {
             
             app.route('/kampus/ruangan/:kampusId')
                     .get(kampus.listRuanganKampus);
+
+            app.route('/vruangan/:ruanganId')
+                    .get(kampus.findVKampus);
                     
             app.route('/kampus/:kampusId')
                     .get(kampus.findKampus);
