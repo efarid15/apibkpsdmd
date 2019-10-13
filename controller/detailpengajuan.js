@@ -34,14 +34,20 @@ exports.createDetailpengajuan = function(req, res) {
     const idJenisdiklat = req.body.idJenisdiklat;
     const idKampus = req.body.idKampus;
     const idRuangan = req.body.idRuangan;
-    const tglMulai = req.body.tglMulai;
-    const tglAkhir = req.body.tglAkhir;
     const idPengajuan = req.body.idPengajuan;
     const idMentor = req.body.idMentor;
+    const tglStartoncamp1 = req.body.tglStartoncamp1;
+    const tglEndoncamp1 = req.body.tglEndoncamp1; 
+    const tglStartoncamp2 = req.body.tglStartoncamp2;
+    const tglEndoncamp2 = req.body.tglEndoncamp2; 
+    const tglStartoncamp3 = req.body.tglStartoncamp3;
+    const tglEndoncamp3 = req.body.tglEndoncamp3;
+    const tglMulai = req.body.tglMulai;
+    const tglAkhir = req.body.tglAkhir;
     
 
-    connection.query('INSERT INTO detailpengajuan (idjenisdiklat, tglmulai, tglberakhir, idtempat, idpengajuan, idwidyaiswara, idruangan) values (?,?,?,?,?,?,?)',
-        [ idJenisdiklat, tglMulai, tglAkhir, idKampus, idPengajuan, idMentor, idRuangan],
+    connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, file) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
