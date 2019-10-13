@@ -103,13 +103,12 @@ exports.createRuangan = function(req, res) {
 
 exports.updateRuangan = function(req, res) {
 
-    const idKampus = req.body.idKampus;
     const namaRuangan = req.body.namaRuangan;
     const idRuangan = req.body.idRuangan;
     
 
-    connection.query('UPDATE ruangan SET idkampus = ?, namaruangan = ?   WHERE id = ?',
-        [ idKampus, namaRuangan, idRuangan ],
+    connection.query('UPDATE ruangan SET namaruangan = ?   WHERE id = ?',
+        [ namaRuangan, idRuangan ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
