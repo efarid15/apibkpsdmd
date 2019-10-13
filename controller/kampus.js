@@ -151,3 +151,18 @@ exports.deleteKampus = function(req, res) {
             }
         });
 };
+
+exports.deleteRuangan = function(req, res) {
+
+    const ruanganId = req.params.ruanganId;
+
+    connection.query('DELETE FROM ruangankampus WHERE id = ?',
+        [ ruanganId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil menghapus ruangan kampus!", res)
+            }
+        });
+};

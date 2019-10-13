@@ -143,6 +143,8 @@ module.exports = function(app) {
                     
             app.route('/kampus/:kampusId')
                     .delete(kampus.deleteKampus);
+            app.route('/ruangan/:ruanganId')
+                    .delete(kampus.deleteRuangan);
 
             
     const widyaiswara = require('./controller/widyaiswara');
