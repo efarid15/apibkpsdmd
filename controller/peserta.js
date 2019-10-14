@@ -27,3 +27,18 @@ exports.listPesertapengajuan = function(req, res) {
             }
         });
 };
+
+exports.listPesertabkd = function(req, res) {
+
+    var bkdId = req.params.bkdId;
+
+    connection.query('SELECT * FROM v_pesertabkd where bkdid = ?',
+        [ bkdId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};

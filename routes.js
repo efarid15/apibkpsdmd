@@ -245,6 +245,8 @@ module.exports = function(app) {
                 .get(peserta.listPeserta);
         app.route('/peserta/:pengajuanId')
                 .get(peserta.listPesertapengajuan);
+        app.route('/peserta/bkd/:bkdId')
+                .get(peserta.listPesertabkd);
 
     const detailpengajuan = require('./controller/detailpengajuan');
 
