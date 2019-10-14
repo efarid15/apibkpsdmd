@@ -132,18 +132,16 @@ exports.updateUsers = function(req, res) {
     const user_id = req.body.user_id;
     const nip = req.body.nip;
     const nama = req.body.nama;
-    const roleid = req.body.roleid;
     const email = req.body.email;
-    const password = req.body.password;
+    
 
-
-    connection.query('UPDATE person SET nip = ?, roleid = ?, email = ?, nama = ?, password = ?  WHERE id = ?',
-        [ nip, roleid, email, nama, password, user_id ],
+    connection.query('UPDATE person SET nip = ?, email = ?, nama = ?  WHERE id = ?',
+        [ nip, email, nama, user_id ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
             } else{
-                response.ok("Berhasil merubah user!", res)
+                response.ok("Berhasil merubah profile!", res)
             }
         });
 };
