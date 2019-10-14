@@ -43,6 +43,21 @@ exports.findUsers = function(req, res) {
         });
 };
 
+exports.findProfile = function(req, res) {
+
+    var userEmail = req.body.userEmail;
+
+    connection.query('SELECT nip, nama, email, roleid FROM users where email = ?',
+        [ userEmail ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
+
 exports.createUsers = function(req, res) {
 
     const nip = req.body.nip;
@@ -132,6 +147,25 @@ exports.updateUsers = function(req, res) {
             }
         });
 };
+
+exports.updatePassword = function(req, res) {
+
+    const newPassword = req.body.newPassword;
+    const userEmail = req.body.userEmail;
+
+    let hash = bcrypt.hashSync(newPassword, 10);
+
+    connection.query('UPDATE users SET password = ?  WHERE email = ?',
+        [ hash, userEmail ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil merubah password user!", res)
+            }
+        });
+};
+
 
 exports.deleteUsers = function(req, res) {
 

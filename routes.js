@@ -17,6 +17,12 @@ module.exports = function(app) {
     app.route('/users')
         .get(users.users);
 
+    app.route('/profile')
+        .get(users.findProfile);
+        
+    app.route('/user/password')
+        .put(users.updatePassword);
+
     app.route('/bkduser')
         .get(users.bkdUser);
 
