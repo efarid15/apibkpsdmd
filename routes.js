@@ -19,7 +19,7 @@ module.exports = function(app) {
 
     app.route('/profile')
         .get(users.findProfile);
-        
+
     app.route('/user/password')
         .put(users.updatePassword);
 

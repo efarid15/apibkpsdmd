@@ -135,7 +135,7 @@ exports.updateUsers = function(req, res) {
     const email = req.body.email;
     
 
-    connection.query('UPDATE person SET nip = ?, email = ?, nama = ?  WHERE id = ?',
+    connection.query('UPDATE users SET nip = ?, email = ?, nama = ?  WHERE id = ?',
         [ nip, email, nama, user_id ],
         function (error, rows, fields){
             if(error){
