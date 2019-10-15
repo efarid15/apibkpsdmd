@@ -45,10 +45,11 @@ exports.createPengajuan= function(req, res) {
     const namaKegiatan = req.body.namaKegiatan;
     const jmlPeserta = req.body.jmlPeserta;
     const tglKegiatan = req.body.tglKegiatan;
+    const tempat = req.body.tempat
     
     
-    connection.query('INSERT INTO pengajuan (bkd, namakegiatan, jmlpeserta, tglkegiatan) values (?,?,?,?)',
-        [ idBkd, namaKegiatan, jmlPeserta, tglKegiatan ],
+    connection.query('INSERT INTO pengajuan (bkd, namakegiatan, jmlpeserta, tglkegiatan, tempat) values (?,?,?,?,?)',
+        [ idBkd, namaKegiatan, jmlPeserta, tglKegiatan, tempat ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
