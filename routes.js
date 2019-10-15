@@ -217,6 +217,13 @@ module.exports = function(app) {
                 app.route('/pengajuan/approve')
                         .get(pengajuan.listApprove);
                 
+                app.route('pengajuan/reject')
+                        .post(pengajuan.createReject);
+                
+                app.route('pengajuan/reject')
+                        .put(pengajuan.setReject);
+                
+                
                 app.route('/pengajuan/approve/:pengajuanId')
                         .get(pengajuan.findApprove);
 
@@ -280,6 +287,10 @@ module.exports = function(app) {
    
    app.route('/upload')
    .post(uploads.FileUpload);
+
+   app.route('/upload/reject')
+   .post(uploads.FileReject);
+
    app.route('/upload/bkd')
    .post(uploads.FileUploadbkd);
     

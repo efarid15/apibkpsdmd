@@ -60,6 +60,24 @@ exports.createPengajuan= function(req, res) {
         });
 };
 
+exports.createReject= function(req, res) {
+
+    const idPengajuan = req.body.idPengajuan;
+    const alasan = req.body.alasan;
+    const dokumenreject = req.body.dokumenreject;
+    
+    connection.query('INSERT INTO reject (idpengajuan, alasan, dokumenreject) values (?,?,?)',
+        [ idPengajuan, alasan, dokumenreject ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil tolak pengajuan ", res)
+            }
+        });
+};
+
+
 exports.findApprove = function(req, res) {
 
     var pengajuanId = req.params.pengajuanId;
@@ -123,6 +141,22 @@ exports.findPengajuan = function(req, res) {
 };
 
 exports.setApprove = function(req, res) {
+
+    var pengajuanId = req.body.pengajuanId;
+    var statusPengajuan = req.body.statusPengajuan;
+
+    connection.query('UPDATE pengajuan SET status = ? where id = ?',
+        [ statusPengajuan, pengajuanId ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok(rows, res)
+            }
+        });
+};
+
+exports.setReject = function(req, res) {
 
     var pengajuanId = req.body.pengajuanId;
     var statusPengajuan = req.body.statusPengajuan;

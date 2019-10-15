@@ -30,6 +30,33 @@ upload(req, res, err => {
     
 };
 
+exports.FileReject = function (req, res) {
+
+    const storage = multer.diskStorage({
+        destination : './uploads/reject',
+        filename: function(req, file, cb){
+            cb(null, file.originalname);
+        }
+    });
+    
+    //init upload
+    const upload = multer({
+        storage : storage
+    }).single('dokumen');
+    
+    //set storage engine
+
+upload(req, res, err => {
+    if(err){
+        console.log(err)
+    } else{
+        response.ok("Berhasil upload file!", res)
+    }
+ });
+    
+};
+
+
 exports.FileUploadbkd = function (req, res) {
 
     const storage = multer.diskStorage({
