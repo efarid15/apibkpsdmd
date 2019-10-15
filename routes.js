@@ -280,6 +280,8 @@ module.exports = function(app) {
    
    app.route('/upload')
    .post(uploads.FileUpload);
+   app.route('/upload/bkd')
+   .post(uploads.FileUploadbkd);
     
 };
 
