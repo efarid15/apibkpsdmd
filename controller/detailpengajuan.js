@@ -59,13 +59,13 @@ exports.createDetailpengajuan = function(req, res) {
     //init upload
     const upload = multer({
         storage : storage
-    }).single('dokumen');
+    }).array('dokumen', 3);
     
     upload(req, res, err => {
         if(err){
             console.log(err)
         } else{
-            connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,"'+req.file+'")',
+            connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,"'+req.files+'")',
              [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir],
                 function (error, rows, fields){
                     if(error){
