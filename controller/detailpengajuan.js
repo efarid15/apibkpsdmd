@@ -2,6 +2,9 @@
 
 const response = require('../res');
 const connection = require('../conn');
+const multer = require('multer');
+const path = require('path');
+
 
 exports.listDetailpengajuan = function(req, res) {
     connection.query('SELECT * FROM detailpengajuan', function (error, rows, fields){
@@ -44,17 +47,38 @@ exports.createDetailpengajuan = function(req, res) {
     const tglEndoncamp3 = req.body.tglEndoncamp3;
     const tglMulai = req.body.tglMulai;
     const tglAkhir = req.body.tglAkhir;
-    const file = req.body.file;
+    const filename = req.file.filename;
+
+    const storage = multer.diskStorage({
+        destination : './uploads',
+        filename: function(req, file, cb){
+            cb(null, file.fieldname + '-' + Date.now() +
+            path.extname(file.originalname));
+        }
+    });
+    
+    //init upload
+    const upload = multer({
+        storage : storage
+    }).single('dokumen');
+    
+    upload(req, res, err => {
+        if(err){
+            console.log(err)
+        } else{
+            connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+             [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir, filename ],
+                function (error, rows, fields){
+                    if(error){
+                        console.log(error)
+                    } else{
+                        response.ok("Berhasil menambahkan detail pengajuan", res)
+                    }
+            });
+        }
+     });
     
 
-    connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-        [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir, file ],
-        function (error, rows, fields){
-            if(error){
-                console.log(error)
-            } else{
-                response.ok("Berhasil menambahkan detail pengajuan", res)
-            }
-        });
+    
 };
 

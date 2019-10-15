@@ -276,7 +276,10 @@ module.exports = function(app) {
         app.route('/kritik')
                 .post(kritik.createKritik);
                                 
-        
+   const uploads = require('./controller/upload');
+   
+   app.route('/upload')
+   .post(uploads.FileUpload);
     
 };
 
