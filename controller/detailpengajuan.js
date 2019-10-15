@@ -48,7 +48,7 @@ exports.createDetailpengajuan = function(req, res) {
     const tglMulai = req.body.tglMulai;
     const tglAkhir = req.body.tglAkhir;
     const filename = req.file.filename;
-
+    
     const storage = multer.diskStorage({
         destination : './uploads',
         filename: function(req, file, cb){
@@ -66,8 +66,8 @@ exports.createDetailpengajuan = function(req, res) {
         if(err){
             console.log(err)
         } else{
-            connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,"'+filename+'")',
-             [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir ],
+            connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+             [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir, filename ],
                 function (error, rows, fields){
                     if(error){
                         console.log(error)
