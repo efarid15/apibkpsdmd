@@ -46,10 +46,11 @@ exports.createPengajuan= function(req, res) {
     const jmlPeserta = req.body.jmlPeserta;
     const tglKegiatan = req.body.tglKegiatan;
     const tempat = req.body.tempat
+    const filepengajuan = req.body.filepengajuan
     
     
-    connection.query('INSERT INTO pengajuan (bkd, namakegiatan, jmlpeserta, tglkegiatan, tempat) values (?,?,?,?,?)',
-        [ idBkd, namaKegiatan, jmlPeserta, tglKegiatan, tempat ],
+    connection.query('INSERT INTO pengajuan (bkd, namakegiatan, jmlpeserta, tglkegiatan, tempat, filepengajuan) values (?,?,?,?,?,?)',
+        [ idBkd, namaKegiatan, jmlPeserta, tglKegiatan, tempat, filepengajuan ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
