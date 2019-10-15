@@ -47,26 +47,10 @@ exports.createDetailpengajuan = function(req, res) {
     const tglEndoncamp3 = req.body.tglEndoncamp3;
     const tglMulai = req.body.tglMulai;
     const tglAkhir = req.body.tglAkhir;
+    const dokumenpengajuan = req.body.dokumenpengajuan;
     
-    const storage = multer.diskStorage({
-        destination : './uploads',
-        filename: function(req, file, cb){
-            cb(null, file.fieldname + '-' + Date.now() +
-            path.extname(file.originalname));
-        }
-    });
-    
-    //init upload
-    const upload = multer({
-        storage : storage
-    }).array('dokumen', 3);
-    
-    upload(req, res, err => {
-        if(err){
-            console.log(err)
-        } else{
-            connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,"'+req.files+'")',
-             [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir],
+    connection.query('INSERT INTO detailpengajuan (idjenisdiklat, idtempat, idpengajuan, idwidyaiswara, idruangan, tglstartoncamp1, tglendoncamp1, tglstartoncamp2, tglendoncamp2, tglstartoncamp3, tglendoncamp3, tglmulai, tglberakhir, dokumenpengajuan) values (?,?,?,?,?,?,?,?,?,?,?,?,?,"'+req.files+'")',
+             [ idJenisdiklat, idKampus, idPengajuan, idMentor, idRuangan, tglStartoncamp1, tglEndoncamp1, tglStartoncamp2, tglEndoncamp2, tglStartoncamp3, tglEndoncamp3, tglMulai, tglAkhir, dokumenpengajuan],
                 function (error, rows, fields){
                     if(error){
                         console.log(error)
@@ -74,10 +58,6 @@ exports.createDetailpengajuan = function(req, res) {
                         response.ok("Berhasil menambahkan detail pengajuan", res)
                     }
             });
-        }
-     });
-    
 
     
 };
-
