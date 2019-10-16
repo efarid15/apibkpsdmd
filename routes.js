@@ -293,6 +293,17 @@ module.exports = function(app) {
 
    app.route('/upload/bkd')
    .post(uploads.FileUploadbkd);
+
+   const rundown = require('./controller/rundown');
+
+         app.route('/rundown')
+                .get(rundown.listRundown);
+
+        app.route('/rundown/:pengajuanId')
+                .get(rundown.findRundown);
+
+        app.route('/rundown')
+                .post(rundown.createRundown);
     
 };
 
