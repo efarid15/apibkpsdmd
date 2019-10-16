@@ -19,7 +19,7 @@ exports.findRundown = function(req, res) {
     var pengajuanId = req.params.pengajuanId;
 
     connection.query('SELECT * FROM rundown where idpengajuan = ?',
-        [ bkdId ],
+        [ pengajuanId ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
