@@ -216,6 +216,10 @@ module.exports = function(app) {
                         
                 app.route('/pengajuan/approve')
                         .get(pengajuan.listApprove);
+                app.route('/pengajuan/approvekabupaten')
+                        .get(pengajuan.listApprovekabupaten);
+                
+                
                 
                 app.route('/pengajuan/reject')
                         .post(pengajuan.createReject);
