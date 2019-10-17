@@ -49,6 +49,22 @@ exports.listApprovekabupaten = function(req, res) {
     });
 };
 
+exports.findApprovekabupaten = function(req, res) {
+    
+    const bkdId = req.params.bkdId;
+
+    connection.query('SELECT * FROM v_approvekabupaten where bkd = ?', 
+     [ bkdId ], 
+     function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok(rows, res)
+        }
+    });
+};
+
+
 exports.createPengajuan= function(req, res) {
 
     const idBkd = req.body.idBkd;

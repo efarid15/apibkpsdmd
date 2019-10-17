@@ -213,6 +213,9 @@ module.exports = function(app) {
                         .get(pengajuan.listPengajuan);
                 app.route('/pengajuan/bkd/:bkdId')
                         .get(pengajuan.listPengajuanbkd);
+
+                app.route('/pengajuan/approvekabupaten/:bkdId')
+                        .get(pengajuan.findApprovekabupaten);
                         
                 app.route('/pengajuan/approve')
                         .get(pengajuan.listApprove);
