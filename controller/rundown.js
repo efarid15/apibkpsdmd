@@ -35,15 +35,16 @@ exports.createRundown = function(req, res) {
     const day = req.body.day;
     const deskripsi = req.body.deskripsi;
     const hari = req.body.hari;
+    const idwidyaiswara = req.body.idwidyaiswara;
     
 
-    connection.query('INSERT INTO rundown (idpengajuan, day, deskripsi, hari) values (?,?,?,?)',
-        [ idpengajuan, day, deskripsi, hari ],
+    connection.query('INSERT INTO rundown (idpengajuan, day, deskripsi, hari, idwidyaiswara) values (?,?,?,?,?)',
+        [ idpengajuan, day, deskripsi, hari, idwidyaiswara ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
             } else{
-                response.ok("Berhasil menambahkan kritik saran", res)
+                response.ok("Berhasil menambahkan rundown kegiatan", res)
             }
         });
 };
