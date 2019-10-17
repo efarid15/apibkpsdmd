@@ -219,10 +219,13 @@ module.exports = function(app) {
                         
                 app.route('/pengajuan/approve')
                         .get(pengajuan.listApprove);
+
                 app.route('/pengajuan/approvekabupaten')
                         .get(pengajuan.listApprovekabupaten);
                 
-                
+                 app.route('/pengajuan/count')
+                        .get(pengajuan.countPengajuan);
+
                 
                 app.route('/pengajuan/reject')
                         .post(pengajuan.createReject);
@@ -254,6 +257,7 @@ module.exports = function(app) {
                 app.route('/pengajuan')
                         .post(pengajuan.createPengajuan);
 
+               
      const kabupaten = require('./controller/kabupaten');
 
                         app.route('/kabupaten')

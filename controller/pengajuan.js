@@ -13,6 +13,16 @@ exports.listPengajuan = function(req, res) {
     });
 };
 
+exports.countPengajuan = function(req, res) {
+    connection.query('SELECT * from v_countpengajuan', function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok(rows, res)
+        }
+    });
+};
+
 exports.listPengajuanbkd = function(req, res) {
 
     var bkdId = req.params.bkdId;
