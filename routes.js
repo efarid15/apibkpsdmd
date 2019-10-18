@@ -209,8 +209,12 @@ module.exports = function(app) {
     
    const pengajuan = require('./controller/pengajuan');
 
+                app.route('/livepengajuan')
+                        .get(pengajuan.livePengajuan);
+
                 app.route('/pengajuan')
                         .get(pengajuan.listPengajuan);
+
                 app.route('/pengajuan/bkd/:bkdId')
                         .get(pengajuan.listPengajuanbkd);
 

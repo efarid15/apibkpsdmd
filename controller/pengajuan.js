@@ -13,6 +13,16 @@ exports.listPengajuan = function(req, res) {
     });
 };
 
+exports.livePengajuan = function(req, res) {
+    connection.query('SELECT * FROM v_livekegiatan', function (error, rows, fields){
+        if(error){
+            console.log(error)
+        } else{
+            response.ok(rows, res)
+        }
+    });
+};
+
 exports.countPengajuan = function(req, res) {
     connection.query('SELECT * from v_countpengajuan', function (error, rows, fields){
         if(error){
