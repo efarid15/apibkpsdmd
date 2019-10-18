@@ -32,7 +32,7 @@ exports.findUsers = function(req, res) {
 
     var user_id = req.params.user_id;
 
-    connection.query('SELECT nip, nama, email, roleid FROM users where id = ?',
+    connection.query('SELECT nip, nama, email, roleid, bkdid FROM users where id = ?',
         [ user_id ],
         function (error, rows, fields){
             if(error){
