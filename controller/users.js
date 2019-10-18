@@ -146,6 +146,26 @@ exports.updateUsers = function(req, res) {
         });
 };
 
+exports.updateUserbkd = function(req, res) {
+
+    const userid = req.body.userid;
+    const bkdid = req.body.bkdid;
+    const nama = req.body.nama;
+    const email = req.body.email;
+    
+
+    connection.query('UPDATE users SET bkdid = ?, email = ?, nama = ?  WHERE id = ?',
+        [ bkdid, email, nama, userid ],
+        function (error, rows, fields){
+            if(error){
+                console.log(error)
+            } else{
+                response.ok("Berhasil merubah profile!", res)
+            }
+        });
+};
+
+
 exports.updatePassword = function(req, res) {
 
     const newPassword = req.body.newPassword;

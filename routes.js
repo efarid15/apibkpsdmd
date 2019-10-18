@@ -41,6 +41,9 @@ module.exports = function(app) {
     app.route('/users')
         .put(users.updateUsers);
 
+    app.route('/users/bkd')
+        .put(users.updateUserbkd);
+
     app.route('/users')
         .delete(users.deleteUsers);
 
