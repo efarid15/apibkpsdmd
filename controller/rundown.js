@@ -36,10 +36,11 @@ exports.createRundown = function(req, res) {
     const deskripsi = req.body.deskripsi;
     const hari = req.body.hari;
     const idwidyaiswara = req.body.idwidyaiswara;
+    const jam = req.body.jam;
     
 
-    connection.query('INSERT INTO rundown (idpengajuan, day, deskripsi, hari, idwidyaiswara) values (?,?,?,?,?)',
-        [ idpengajuan, day, deskripsi, hari, idwidyaiswara ],
+    connection.query('INSERT INTO rundown (idpengajuan, day, deskripsi, hari, idwidyaiswara, jam) values (?,?,?,?,?,?)',
+        [ idpengajuan, day, deskripsi, hari, idwidyaiswara, jam ],
         function (error, rows, fields){
             if(error){
                 console.log(error)
